@@ -1,0 +1,24 @@
+
+<div class="header">
+
+</div>
+@set('mealActiveClass', '')
+@set('saladActiveClass', '')
+@set('dessertActiveClass', '')
+@set('homeActiveClass', '')
+@if(navType=='meal')
+  @set('mealActiveClass', 'active')
+@elseif(navType=='salad')
+  @set('saladActiveClass', 'active')
+@elseif(navType=='dessert')
+  @set('dessertActiveClass', 'active')
+@else
+  @set('homeActiveClass', 'active')
+@endif
+
+<div id="navbar">
+  <a class="nav-link {{homeActiveClass}}" href="/">Home</a>
+  <a class="nav-link {{mealActiveClass}}" href="/posts-type/meal">Meals</a>
+  <a class="nav-link {{saladActiveClass}}" href="/posts-type/salad">Salads</a>
+  <a class="nav-link {{dessertActiveClass}}" href="/posts-type/dessert">Desserts</a>
+</div>

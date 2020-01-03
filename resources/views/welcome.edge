@@ -1,0 +1,464 @@
+@layout('layout.default')
+
+@section('content')
+
+<div class="content">
+  <div class="btn-align">
+    <a href="{{ route('posts.create') }}" role="button" class="btn btn-secondary"><i class="fa fa-plus"></i> Add your recipe
+    </a>
+  </div>
+</div>
+
+<main>
+
+  <div class="btn-widgets">
+    <a href="#section-1"><img src="breakfast.png" width="50px" height="50px"> Meals</a>
+    <a href="#section-2"><img src="food.png" width="50px" height="50px"> Salads</a>
+    <a href="#section-3"><img src="cake.png" width="50px" height="50px"> Desserts</a>
+  </div>
+  <hr>
+
+  <section id="section-1">
+    <h1>Meals</h1>
+    <div class="row shadow p-3 mb-5 rounded">
+      <div class="column">
+        <h2 class="name">Spaghetti Sauce with Ground Beef</h2>
+        <div class="image">
+          <img src="spaghetti.jpg" alt="spaghetti" style="width:390px; height:230px;">
+        </div>
+        <div class="ingredients">
+          <h6>Ingredients</h6>
+          <hr>
+          <ul>
+            <li>1 pound ground beef</li>
+            <li>1 onion, chopped</li>
+            <li>4 cloves garlic, minced</li>
+            <li>1 small green bell pepper, diced</li>
+            <li>1 (28 ounce) can diced tomatoes</li>
+            <li>1 (16 ounce) can tomato sauce</li>
+            <li>1 (6 ounce) can tomato paste</li>
+            <li>2 teaspoons dried oregano</li>
+            <li>1 teaspoon salt</li>
+            <li>1/2 teaspoon black pepper</li>
+          </ul>
+        </div>
+        <div id="accordion1">
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#collapse1">
+                View directions
+              </a>
+            </div>
+            <div id="collapse1" class="collapse hide" data-parent="#accordion1">
+              <div class="card-body">
+                Combine ground beef, onion, garlic, and green pepper in a large saucepan. Cook and stir until meat is brown and vegetables are tender.
+                Drain grease. Stir diced tomatoes, tomato sauce, and tomato paste into the pan. Season with oregano, basil, salt, and pepper.
+                Simmer spaghetti sauce for 1 hour, stirring occasionally.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time">
+          <p><span class="fa fa-clock-o" aria-hidden="true"></span> Cook time:  1 h 25 m</p>
+        </div>
+      </div>
+      <div class="column">
+        <h2 class="name">Campfire Pepperoni Pizza</h2>
+        <div class="ingredients">
+          <h6>Ingredients</h6>
+          <hr>
+          <ul>
+            <li>1 pound refrigerated pizza dough</li>
+            <li>1/4 cup pizza sauce</li>
+            <li>1/2 cup shredded mozzarella cheese</li>
+            <li>1/2 cup sliced pepperoni</li>
+          </ul>
+        </div>
+        <div class="image">
+          <img src="pizza.jpg" alt="spaghetti" style="width:390px; height:230px;">
+        </div>
+        <div id="accordion2">
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#collapse2">
+                View directions
+              </a>
+            </div>
+            <div id="collapse2" class="collapse hide" data-parent="#accordion2">
+              <div class="card-body">
+                Place pizza stone on grill directly over wood fire. You may need to begin by spreading out the wood if the flames are too tall.
+                Roll out the pizza dough to desired thickness. Place it on the pizza stone and cook 10 minutes on one side until golden.
+                Remove from the fire and on the cooked side, spread the pizza sauce in an even layer over dough leaving about a half inch around the rim of the pizza dough bare.
+                Sprinkle mozzarella cheese evenly on top of the sauce, followed by the pepperoni slices.
+                Place uncooked side down, back on the pizza stone. Cover with a foil tent and cook until cheese has melted, about 10 minutes more.
+                Transfer pizza to a cutting board and let cool slightly before cutting and serving.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time">
+          <p><span class="fa fa-clock-o" aria-hidden="true"></span> Cook time:  30 m.</p>
+        </div>
+      </div>
+      <div class="column">
+        <h2 class="name">Cardamom Maple Salmon</h2>
+        <div class="image">
+          <img src="salmon.jpg" alt="spaghetti" style="width:390px; height:230px;">
+        </div>
+        <div class="ingredients">
+          <h6>Ingredients</h6>
+          <hr>
+          <ul>
+            <li>1 1/2 teaspoons salt</li>
+            <li>1 teaspoon paprika</li>
+            <li>1 teaspoon ground cardamom</li>
+            <li>1 teaspoon ground coriander</li>
+            <li>1/2 teaspoon ground black pepper</li>
+            <li>1/4 cup grapeseed oil</li>
+            <li>2 tablespoons maple syrup</li>
+            <li>1 (2 pound) salmon fillet, cut into 3-inch pieces</li>
+          </ul>
+        </div>
+        <div id="accordion3">
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#collapse3">
+                View directions
+              </a>
+            </div>
+            <div id="collapse3" class="collapse hide" data-parent="#accordion3">
+              <div class="card-body">
+                Stir salt, paprika, cardamom, coriander, and black pepper together in a bowl. Add oil and maple syrup and stir until evenly combined.
+                Preheat a non-stick frying pan over medium-high heat, about 350 degrees F (175 degrees C).
+                Dredge salmon pieces through the maple syrup mixture until evenly coated on all sides.
+                Cook salmon in the preheated pan until fish flakes easily with a fork, 5 to 7 minutes per side.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time">
+          <p><span class="fa fa-clock-o" aria-hidden="true"></span> Cook time:  25 m.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="btn-viewmore">
+    <a href="/posts-type/meal" role="button" class="btn btn-secondary"> View more meals</a>
+  </div>
+
+  <section id="section-2">
+    <h1>Salads</h1>
+    <div class="row shadow p-3 mb-5 rounded">
+      <div class="column">
+        <h2 class="name">Russian Salad</h2>
+        <div class="image">
+          <img src="russian-salad.jpg" alt="spaghetti" style="width:390px; height:230px;">
+        </div>
+        <div class="ingredients">
+          <h6>Ingredients</h6>
+          <hr>
+          <ul>
+            <li>6 potatoes, peeled</li>
+            <li>1 carrot, or more to taste</li>
+            <li>4 eggs</li>
+            <li>6 large pickles, cut into cubes</li>
+            <li>1 (15 ounce) can peas, drained</li>
+            <li>1/2 cup cubed fully cooked ham, or to taste</li>
+            <li>1 tablespoon chopped fresh parsley, or to taste (optional)</li>
+            <li>1/2 cup mayonnaise, or to taste</li>
+          </ul>
+        </div>
+        <div id="accordion4">
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#collapse4">
+                View directions
+              </a>
+            </div>
+            <div id="collapse4" class="collapse hide" data-parent="#accordion4">
+              <div class="card-body">
+                Bring a large pot of water to a boil; add potatoes and carrot. Return mixture to a boil and add eggs;
+                cook until potatoes are tender, 20 to 30 minutes. Drain and slightly cool mixture. Chop potatoes and carrot; peel and chop eggs.
+                Mix potatoes, carrot, eggs, pickles, peas, ham, and parsley together in a large bowl; stir in mayonnaise until salad is evenly coated.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time">
+          <p><span class="fa fa-clock-o" aria-hidden="true"></span> Cook time: 50 m.</p>
+        </div>
+      </div>
+      <div class="column">
+        <h2 class="name">Caesar Salad</h2>
+        <div class="ingredients">
+          <h6>Ingredients</h6>
+          <hr>
+          <ul>
+            <li>6 cloves garlic, peeled, divided</li>
+            <li>3/4 cup mayonnaise</li>
+            <li>5 anchovy fillets, minced</li>
+            <li>6 tablespoons grated Parmesan cheese, divided</li>
+            <li>1 teaspoon Worcestershire sauce</li>
+            <li>1 teaspoon Dijon mustard</li>
+            <li>1 tablespoon lemon juice, or more to taste</li>
+            <li>salt to taste</li>
+            <li>ground black pepper to taste</li>
+            <li>1/4 cup olive oil</li>
+            <li>4 cups day-old bread, cubed</li>
+            <li>1 head romaine lettuce, torn into bite-size pieces</li>
+          </ul>
+        </div>
+        <div class="image">
+          <img src="ceasar-salad.jpg" alt="spaghetti" style="width:390px; height:230px;">
+        </div>
+        <div id="accordion5">
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#collapse5">
+                View directions
+              </a>
+            </div>
+            <div id="collapse5" class="collapse hide" data-parent="#accordion5">
+              <div class="card-body">
+                Mince 3 cloves of garlic, and combine in a small bowl with mayonnaise, anchovies, 2 tablespoons of the Parmesan cheese,
+                Worcestershire sauce, mustard, and lemon juice. Season to taste with salt and black pepper.
+                Refrigerate until ready to use.
+                Heat oil in a large skillet over medium heat. Cut the remaining 3 cloves of garlic into quarters, and add to hot oil.
+                Cook and stir until brown, and then remove garlic from pan.
+                Add bread cubes to the hot oil. Cook, turning frequently, until lightly browned.
+                Remove bread cubes from oil, and season with salt and pepper.
+                Place lettuce in a large bowl. Toss with dressing, remaining Parmesan cheese, and seasoned bread cubes.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time">
+          <p><span class="fa fa-clock-o" aria-hidden="true"></span> Cook time:  35 m</p>
+        </div>
+      </div>
+      <div class="column">
+        <h2 class="name">Mexican Bean Salad</h2>
+        <div class="image">
+          <img src="mexican-salad.jpg" alt="spaghetti" style="width:390px; height:230px;">
+        </div>
+        <div class="ingredients">
+          <h6>Ingredients</h6>
+          <hr>
+          <ul>
+            <li>1 (15 ounce) can black beans, rinsed and drained</li>
+            <li>1 (15 ounce) can kidney beans, drained</li>
+            <li>1 (15 ounce) can cannellini beans, drained and rinsed</li>
+            <li>1 green bell pepper, chopped</li>
+            <li>1 red bell pepper, chopped</li>
+            <li>1 (10 ounce) package frozen corn kernels</li>
+            <li>1 red onion, chopped</li>
+            <li>1/2 cup olive oil</li>
+            <li>1/2 cup red wine vinegar</li>
+            <li>2 tablespoons fresh lime juice</li>
+            <li>1 tablespoon salt</li>
+            <li>1/4 cup chopped fresh cilantro</li>
+            <li>1/2 tablespoon ground cumin</li>
+            <li>1/2 tablespoon ground black pepper</li>
+            <li>1 dash hot pepper sauce</li>
+          </ul>
+        </div>
+        <div id="accordion6">
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#collapse6">
+                View directions
+              </a>
+            </div>
+            <div id="collapse6" class="collapse hide" data-parent="#accordion6">
+              <div class="card-body">
+                In a large bowl, combine beans, bell peppers, frozen corn, and red onion.
+                In a small bowl, whisk together olive oil, red wine vinegar, lime juice, lemon juice, sugar, salt, garlic, cilantro, cumin, and black pepper.
+                Season to taste with hot sauce and chili powder.
+                Pour olive oil dressing over vegetables; mix well. Chill thoroughly, and serve cold.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time">
+          <p><span class="fa fa-clock-o" aria-hidden="true"></span> Cook time:  1 h 15 m.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="btn-viewmore">
+    <a href="/posts-type/salad" role="button" class="btn btn-secondary"> View more salads</a>
+  </div>
+
+  <section id="section-3">
+    <h1>Desserts</h1>
+    <div class="row shadow p-3 mb-5 rounded">
+      <div class="column">
+        <h2 class="name">Ice Cream Sandwich Dessert</h2>
+        <div class="image">
+          <img src="ice-cream.jpg" alt="spaghetti" style="width:390px; height:230px;">
+        </div>
+        <div class="ingredients">
+          <h6>Ingredients</h6>
+          <hr>
+          <ul>
+            <li>22 ice cream sandwiches</li>
+            <li>1 (16 ounce) container frozen whipped topping, thawed</li>
+            <li>1 (12 ounce) jar caramel ice cream topping</li>
+            <li>1 1/2 cups salted peanuts</li>
+          </ul>
+        </div>
+        <div id="accordion7">
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#collapse7">
+                View directions
+              </a>
+            </div>
+            <div id="collapse7" class="collapse hide" data-parent="#accordion7">
+              <div class="card-body">
+                Cut one ice cream sandwich in half. Place one whole and one half sandwich along a short side of a high-sided 9x13-inch casserole dish.
+                Repeat until bottom is covered, alternating the whole and half sandwiches. Spread with half of the whipped topping. Pour caramel on top.
+                Sprinkle with half of the peanuts. Repeat layers with remaining ice cream sandwiches, whipped topping, and peanuts.
+                The pan will be full. Cover and freeze for up to 2 months. Remove from freezer 20 minutes before serving. Cut into squares.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time">
+          <p><span class="fa fa-clock-o" aria-hidden="true"></span> Cook time: 1 h 20 m.</p>
+        </div>
+      </div>
+      <div class="column">
+        <h2 class="name">Chocolate Mint Dessert Brownies</h2>
+        <div class="ingredients">
+          <h6>Ingredients</h6>
+          <hr>
+          <ul>
+            <li>1 cup white sugar</li>
+            <li>1/2 cup butter, softened</li>
+            <li>4 eggs</li>
+            <li>1 1/2 cups chocolate syrup</li>
+            <li>1 cup all-purpose flour</li>
+            <li>2 cups confectioners' sugar</li>
+            <li>1/2 cup butter, softened</li>
+            <li>2 tablespoons creme de menthe liqueur</li>
+            <li>6 tablespoons butter</li>
+            <li>1 cup semisweet chocolate chips</li>
+          </ul>
+        </div>
+        <div class="image">
+          <img src="chocolate-mint.jpg" alt="spaghetti" style="width:390px; height:230px;">
+        </div>
+        <div id="accordion8">
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#collapse8">
+                View directions
+              </a>
+            </div>
+            <div id="collapse8" class="collapse hide" data-parent="#accordion8">
+              <div class="card-body">
+                Preheat oven to 350 degrees F (175 degrees C). Grease a 9x13 inch baking dish.
+                In a large bowl, cream together 1 cup sugar and 1/2 cup of softened butter until smooth. Beat in eggs one at a time, then stir in the chocolate syrup.
+                Stir in the flour until just blended. Spread the batter evenly into the prepared pan.
+                Bake for 25 to 30 minutes in the preheated oven, or until top springs back when lightly touched. Cool completely in the pan.
+                In a small bowl, beat the confectioners' sugar, 1/2 cup butter or margarine and creme de menthe until smooth.
+                Spread evenly over the cooled brownies, then chill until set.
+                In a small bowl over simmering water, or in the microwave, melt the remaining 6 tablespoons of butter and the chocolate chips, stirring occasionally until smooth.
+                Allow to cool slightly, then spread over the top of the mint layer.
+                Cover, and chill for at least 1 hour before cutting into squares.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time">
+          <p><span class="fa fa-clock-o" aria-hidden="true"></span> Cook time: 2 h 5 m .</p>
+        </div>
+      </div>
+      <div class="column">
+        <h2 class="name">Chocolate Crepes</h2>
+        <div class="image">
+          <img src="chocolate-crapes.jpg" alt="spaghetti" style="width:390px; height:230px;">
+        </div>
+        <div class="ingredients">
+          <h6>Ingredients</h6>
+          <hr>
+          <ul>
+            <li>2 eggs</li>
+            <li>1/2 cup milk</li>
+            <li>1/2 cup water</li>
+            <li>3/4 cup all-purpose flour</li>
+            <li>6 teaspoons white sugar</li>
+            <li>1/3 tablespoon butter or margarine</li>
+            <li>1 fluid ounce cognac</li>
+            <li>1 (3.9 ounce) package instant chocolate pudding mix</li>
+            <li>1 teaspoon instant coffee granules</li>
+            <li>3 cups heavy cream</li>
+            <li>4 (1 ounce) squares bittersweet chocolate</li>
+            <li>1/2 cup butter or margarine</li>
+            <li>1 1/4 cups nonfat evaporated milk</li>
+            <li>2 1/2 cups confectioners' sugar</li>
+          </ul>
+        </div>
+        <div id="accordion9">
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#collapse9">
+                View directions
+              </a>
+            </div>
+            <div id="collapse9" class="collapse hide" data-parent="#accordion9">
+              <div class="card-body">
+                Crepe batter: in a large bowl, mix together eggs, milk, water, flour, sugar, 1 teaspoon butter, and cognac.
+                Filling: beat pudding mix, instant coffee and whipping cream together with an electric mixer until the mixture is thick.
+                Sauce: in a small saucepan, melt the chocolate, butter, evaporated milk, and confectioners' sugar together until the mixture is a little thick.
+                Crepes: heat a small skillet (or crepe pan) to a high temperature. Place a small amount of batter into the skillet and swirl it around until the batter covers the bottom of the pan.
+                When the crepe is slightly browned flip the crepe over and let the other side brown for a few seconds.
+                The first crepe will most likely not turn out well, but the rest will. Stack the crepes on top of each other to let tem cool before filling.
+                Spoon the filling into the center of each crepe and roll the crepe up around it. Spoon the sauce over the crepes and serve.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time">
+          <p><span class="fa fa-clock-o" aria-hidden="true"></span> Cook time:  1 h.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="btn-viewmore">
+    <a href="/posts-type/dessert" role="button" class="btn btn-secondary">View more desserts</a>
+  </div>
+</main>
+
+<script>
+  // When the user scrolls the page, execute myFunction
+  window.onscroll = function() {myFunction()};
+
+  // Get the navbar
+  var navbar = document.getElementById("navbar");
+
+  // Get the offset position of the navbar
+  var sticky = navbar.offsetTop;
+
+  // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+
+
+  var header = document.getElementById("navbar");
+  var btns = header.getElementsByClassName("nav-link");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  }
+</script>
+@endsection

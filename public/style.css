@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+
+html, body {
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-size: 28px;
+  font-family: 'Courgette', cursive;
+}
+
+.header {
+  background-image: url("pic4.jpg");
+  padding: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #74d862d9;
+  font-family: 'Courgette', cursive;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #010101;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+#navbar a:hover {
+  background-color: #4d943f;
+}
+
+#navbar a.active {
+  background-color: #4d943f;
+  color: white;
+}
+
+.content {
+  padding: 16px;
+}
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
+.btn-align {
+  text-align: center;
+  flex: 1 1 100%;
+  padding: 20px;
+}
+
+.btn-secondary {
+  color: #000000;
+  background-color: #74d862d9;
+  border-color: #74d862d9;
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #4d943f;
+  border-color: #4d943f;
+}
+
+.btn-outline-secondary:hover {
+  color: #fff;
+  background-color: #4d943f;
+  border-color: #4d943f;
+}
+
+e, .show>.btn-outline-secondary.dropdown-toggle {
+  color: #fff;
+  background-color: #4d943f;
+  border-color: #4d943f;
+}
+
+.btn-viewmore {
+  text-align: right;
+}
+
+main {
+padding-bottom: 40rem;
+margin-left: 70px;
+margin-right: 70px;
+}
+
+section {
+  padding-top: 50px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  font-size: medium;
+  font-family: "Lucida Console";
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.title {
+  text-align: center;
+  margin: 50px;
+}
+
+.app-form {
+  display: flex;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  background-color: #a6f2a6;
+}
+
+.card {
+  background-color: transparent;
+}
+
+.card-header {
+  text-align: center;
+}
+
+.card-header a {
+  text-align: center;
+  color: black;
+}
+
+h1 {
+  font-family: 'Courgette', cursive;
+}
+
+h2 {
+  font-family: 'Courgette', cursive;
+  font-size: 30px;
+  text-align: center;
+}
+
+.image {
+  padding-bottom: 20px;
+}
+
+.time {
+  text-align: right;
+  font-family: 'Courgette', cursive;
+}
+.row-wrapper {
+  display: flex;
+  flex: 1 1 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.recipe-content {
+  display: inline-block;
+  width: 84%;
+  text-align: center;
+}
+.recipe-btn-wrapper {
+  display: inline-block;
+  width: 15%;
+}
+.d-inline-block {
+  display: inline-block;
+}
+
+.btn-widgets {
+  width: 100%;
+
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-widgets a {
+  float: left;
+  text-align: center;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  color: #010101;
+  font-size: 36px;
+  margin: 0;
+  padding: 40px;
+}
+
+.btn-widgets a:hover {
+  text-decoration: none;
+  color: #4d943f;
+}
+
+label{
+  color: #4d943f;
+}
+
+h3{
+  color: #4d943f;
+}
+
+.container-name{
+  text-align: center;
+  flex: 1 1 100%;
+  padding: 20px;
+}
+
+.container-img {
+  flex: 1 1 50%;
+  display: flex;
+  padding: 30px;
+}
+
+.container-img img {
+  width: 500px;
+}
+
+.ingredients1 {
+  flex: 1 1 50%;
+  padding: 30px;
+font-size: 20px;
+}
+
+.accordion {
+  flex: 1 1 50%;
+  font-size: 20px;
+}
+
+.cook-time {
+  flex: 1 1 50%;
+  text-align: center;
+}
+
+.invalid-feedback {
+  font-size: small;
+}
+
+h6 {
+  text-align: center;
+}

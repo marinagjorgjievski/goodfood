@@ -1,0 +1,51 @@
+@layout('layout.default')
+
+@section('content')
+<main>
+<section id="section-1">
+  @each(post in posts)
+  <div class="row shadow p-3 mb-5 rounded">
+    <div class="row-wrapper">
+      <div class="container-name">
+        <h1 class="name">{{post.name}}</h1>
+      </div>
+      <div class="container-img">
+        <img src="{{post.image}}">
+      </div>
+      <div class="ingredients1">
+        <h6>Ingredients :</h6>
+        <hr>
+        <ul>
+          <li>{{post.ingredients}}</li>
+        </ul>
+      </div>
+      <div class="accordion" id="accordion">
+        <div class="card">
+          <div class="card-header">
+            <a class="card-link" data-toggle="collapse" href="#collapse-{{post.id}}">
+              View directions
+            </a>
+          </div>
+          <div id="collapse-{{post.id}}" class="collapse hide" data-parent="#accordion">
+            <div class="card-body">
+              {{post.directions}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cook-time">
+        <p>Cook time: {{post.time}}</p>
+      </div>
+      <div class="btn-align">
+        <a href="{{ route('posts.edit', { id: post.id}) }}" role="button" class=" btn btn-secondary d-inline-block">Edit</a>
+        <form action="{{ route('posts.destroy', { id: post.id}) }}?_method=DELETE" method="POST" class="d-inline-block">
+          {{csrfField()}}
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  @endeach
+</section>
+</main>
+@endsection
