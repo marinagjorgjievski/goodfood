@@ -1,0 +1,147 @@
+@layout('layout.default')
+
+@section('content')
+
+<div class="title">
+  <h1>Edit your recipe</h1>
+</div>
+<form class="app-form" action="{{ route('recipes.update', { id: recipe.id}) }}?_method=PUT" method="POST" enctype="multipart/form-data">
+  {{ csrfField() }}
+  <div class="form-group">
+    <div class="mb-3">
+      <label>Name of recipe</label>
+      <input type="text" class="form-control" name="name" value="{{ old('name', recipe.name)}}" required>
+    </div>
+
+    <h3>Ingredients</h3>
+    <button class="ingredient-entry-btn btn btn-secondary" id="add-ingredient-btn"><i class="fa fa-plus"></i>Add ingredient</button>
+    <div class="mb-3" id="ingredient-list">
+      @each(ingredient in recipe.ingredients)
+      <div class="ingredient-entry" data-id="{{$loop.index}}">
+        <input type="hidden" class="form-control" name="ingredients[{{$loop.index}}][id]" value="{{ingredient.id}}">
+        <label>Amount</label>
+        <input type="text" class="form-control" name="ingredients[{{$loop.index}}][amount]" value="{{ingredient.amount}}" required>
+        <label>Item</label>
+        <input type="text" class="form-control" name="ingredients[{{$loop.index}}][item]" value="{{ingredient.item}}"required>
+        <button class="ingredient-entry-btn remove-ingredient btn btn-secondary" data-id="{{$loop.index}}"><i class="fa fa-minus"></i></button>
+      </div>
+      @endeach
+      @set('ingredientCount', recipe.ingredients.length)
+    </div>
+
+    <div class="form-group">
+      <div class="mb-3">
+        <label>Directions</label>
+        <textarea class="form-control" name="directions" required>{{ old('directions', recipe.directions)}}</textarea>
+      </div>
+
+      <div class="form-group">
+        <div class="mb-3">
+          <label>Cook time</label>
+          <input type="text" class="form-control" name="time" value="{{ old('time', recipe.time)}}" required placeholder="Input time in m(minutes) or h(hours) e.g. 1h 20m">
+        </div>
+
+        <div class="form-group">
+          <div class="mb-3">
+            <div>
+              <img src="{{recipe.image}}" width="300px"/>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="image" value="{{ old('image', recipe.image)}}">
+              <label class="custom-file-label">Add photo from your recipe</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="mb-3">
+              <h3>Choose the type from the recipe</h3>
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="customControlValidation2" name="type" value="Meal" {{ (old("type", recipe.type)=="Meal" ? "checked" : "") }} required>
+                <label class="custom-control-label" for="customControlValidation2">Meal</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="customControlValidation3" name="type" value="Salad" {{ (old("type", recipe.type)=="Salad" ? "checked" : "") }}" required>
+                <label class="custom-control-label" for="customControlValidation3">Salad</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="customControlValidation4" name="type" value="Dessert" {{ (old("type", recipe.type)=="Dessert" ? "checked" : "") }}" required>
+                <label class="custom-control-label" for="customControlValidation4">Dessert</label>
+              </div>
+            </div>
+
+            <div class="btn-align">
+              <button type="submit" class="btn btn-secondary">Edit</button>
+              <a href="/recipes-type/{{recipe.type}}" role="button" class="btn btn-primary">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+  var ingredientCount = {{ingredientCount}};
+  var ingredientTotal = {{ingredientCount}};
+
+  function isMinIngredients() {
+    return ingredientTotal <= 3;
+  }
+
+  function checkMinIngredients()
+  {
+    let removeBtns = document.querySelectorAll('.remove-ingredient');
+    if (isMinIngredients()) {
+      removeBtns.forEach(function(btn) {
+        btn.style.display = "none";
+      });
+    } else {
+      removeBtns.forEach(function(btn) {
+        btn.style.display = "block";
+      });
+    }
+  }
+
+  function addRemoveBtnListeners()
+  {
+    var ingredientList = document.querySelector('#ingredient-list');
+    var removeBtns = ingredientList.querySelectorAll('.remove-ingredient');
+    removeBtns.forEach(function (removeBtn) {
+      removeBtn.addEventListener("click", removeElement);
+    })
+  }
+
+  function addIngredient(e) {
+    e.preventDefault();
+    var element = '' +
+      '        <div class="ingredient-entry" data-id="' + ingredientCount + '">' +
+      '          <label>Amount</label>' +
+      '          <input type="text" class="form-control" name="ingredients['+ingredientCount+'][amount]" required>' +
+      '          <label>Item</label>' +
+      '          <input type="text" class="form-control" name="ingredients['+ingredientCount+'][item]" required>' +
+      '          <button class="ingredient-entry-btn remove-ingredient btn btn-secondary" data-id="' + ingredientCount + '"><i class="fa fa-minus"></i></button>' +
+      '        </div>';
+    var ingredientList = document.querySelector('#ingredient-list');
+    ingredientList.innerHTML = ingredientList.innerHTML + element;
+    addRemoveBtnListeners();
+    ingredientCount++;
+    ingredientTotal++;
+    checkMinIngredients();
+  }
+
+  function removeElement(e) {
+    e.preventDefault();
+    var id = this.getAttribute('data-id');
+    var ingredientEntry = document.querySelector('.ingredient-entry[data-id="'+id+'"]');
+    ingredientEntry.parentNode.removeChild(ingredientEntry);
+    ingredientTotal--;
+    checkMinIngredients();
+  }
+
+  document.querySelector('#add-ingredient-btn').addEventListener("click", addIngredient);
+  checkMinIngredients();
+  addRemoveBtnListeners();
+
+</script>
+
+@endsection

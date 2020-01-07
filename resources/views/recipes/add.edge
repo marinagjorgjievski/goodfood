@@ -1,0 +1,117 @@
+@layout('layout.default')
+
+@section('content')
+
+<div class="title">
+  <h1>Add your recipe</h1>
+</div>
+  <form class="app-form" action="{{ route('recipes.store') }}" method="POST" enctype="multipart/form-data">
+    {{ csrfField() }}
+    <div class="form-group">
+      <div class="mb-3">
+        <label>Name of recipe</label>
+        <input type="text" class="form-control" name="name" value="" required>
+      </div>
+
+      <h3>Ingredients</h3>
+      <button class="ingredient-entry-btn btn btn-secondary" id="add-ingredient-btn"><i class="fa fa-plus"></i>Add ingredient</button>
+      <div class="mb-3" id="ingredient-list">
+        <div class="ingredient-entry" data-id="1">
+          <label>Amount</label>
+          <input type="text" class="form-control"  name="ingredients[0][amount]" required>
+          <label>Item</label>
+          <input type="text" class="form-control"  name="ingredients[0][item]" required>
+        </div>
+        <div class="ingredient-entry" data-id="2">
+          <label>Amount</label>
+          <input type="text" class="form-control" name="ingredients[1][amount]" required>
+          <label>Item</label>
+          <input type="text" class="form-control" name="ingredients[1][item]" required>
+        </div>
+        <div class="ingredient-entry" data-id="3">
+          <label>Amount</label>
+          <input type="text" class="form-control" name="ingredients[2][amount]" required>
+          <label>Item</label>
+          <input type="text" class="form-control" name="ingredients[2][item]" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="mb-3">
+          <label>Directions</label>
+          <textarea class="form-control" name="directions" required></textarea>
+        </div>
+         <div class="form-group">
+           <div class="mb-3">
+             <label>Cook time</label>
+             <input type="text" class="form-control" name="time" value="" required placeholder="Input time in m(minutes) or h(hours) e.g. 1h 20m">
+           </div>
+
+           <div class="form-group">
+             <div class="mb-3">
+               <div class="custom-file">
+                 <input type="file" class="custom-file-input" name="image" id="validatedCustomFile" required>
+                 <label class="custom-file-label" for="validatedCustomFile">Add photo from your recipe</label>
+                 <div class="invalid-feedback">Example invalid custom file feedback</div>
+               </div>
+             </div>
+
+             <div class="form-group">
+              <div class="mb-3">
+                <h3>Choose the type from the recipe</h3>
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="customControlValidation2" name="type" value="Meal" required>
+                  <label class="custom-control-label" for="customControlValidation2">Meal</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="customControlValidation3" name="type" value="Salad" required>
+                  <label class="custom-control-label" for="customControlValidation3">Salad</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="customControlValidation4" name="type" value="Dessert" required>
+                  <label class="custom-control-label" for="customControlValidation4">Dessert</label>
+                </div>
+              </div>
+
+              <div class="btn-align">
+                <button type="submit" class="btn btn-secondary">Add</button>
+                <a href="/" role="button" class="btn btn-primary">Cancel</a>
+              </div>
+             </div>
+           </div>
+         </div>
+      </div>
+    </div>
+  </form>
+<script>
+  var ingredientCount = 3;
+  function addIngredient(e) {
+    e.preventDefault();
+    ingredientCount++;
+    var element = '' +
+      '        <div class="ingredient-entry" data-id="' + ingredientCount + '">' +
+      '          <label>Amount</label>' +
+      '          <input type="text" class="form-control" name="ingredients['+ingredientCount+'][amount]" required>' +
+      '          <label>Item</label>' +
+      '          <input type="text" class="form-control" name="ingredients['+ingredientCount+'][item]" required>' +
+      '          <button class="ingredient-entry-btn remove-ingredient btn btn-secondary" data-id="' + ingredientCount + '"><i class="fa fa-minus"></i></button>' +
+      '        </div>';
+    var ingredientList = document.querySelector('#ingredient-list');
+    ingredientList.innerHTML = ingredientList.innerHTML + element;
+    var removeBtns = ingredientList.querySelectorAll('.remove-ingredient');
+    removeBtns.forEach(function (removeBtn) {
+      removeBtn.addEventListener("click", removeElement);
+    })
+  }
+
+  function removeElement(e) {
+    e.preventDefault();
+    var id = this.getAttribute('data-id');
+    var ingredientEntry = document.querySelector('.ingredient-entry[data-id="'+id+'"]');
+    ingredientEntry.parentNode.removeChild(ingredientEntry);
+  }
+
+  document.querySelector('#add-ingredient-btn').addEventListener("click", addIngredient);
+
+</script>
+@endsection

@@ -47,6 +47,7 @@ body {
 .content {
   padding: 16px;
 }
+
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
   position: fixed;
@@ -94,9 +95,9 @@ e, .show>.btn-outline-secondary.dropdown-toggle {
 }
 
 main {
-padding-bottom: 40rem;
-margin-left: 70px;
-margin-right: 70px;
+  padding-bottom: 40rem;
+  margin-left: 70px;
+  margin-right: 70px;
 }
 
 section {
@@ -171,28 +172,31 @@ h2 {
   text-align: right;
   font-family: 'Courgette', cursive;
 }
+
 .row-wrapper {
   display: flex;
   flex: 1 1 100%;
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .recipe-content {
   display: inline-block;
   width: 84%;
   text-align: center;
 }
+
 .recipe-btn-wrapper {
   display: inline-block;
   width: 15%;
 }
+
 .d-inline-block {
   display: inline-block;
 }
 
 .btn-widgets {
   width: 100%;
-
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
@@ -216,18 +220,18 @@ h2 {
   color: #4d943f;
 }
 
-label{
+label {
   color: #4d943f;
 }
 
-h3{
+h3 {
   color: #4d943f;
 }
 
-.container-name{
+.container-name {
   text-align: center;
   flex: 1 1 100%;
-  padding: 20px;
+  font-size: 20px;
 }
 
 .container-img {
@@ -243,7 +247,7 @@ h3{
 .ingredients1 {
   flex: 1 1 50%;
   padding: 30px;
-font-size: 20px;
+  font-size: 20px;
 }
 
 .accordion {
@@ -262,4 +266,34 @@ font-size: 20px;
 
 h6 {
   text-align: center;
+}
+
+.ingredient-entry {
+  display: flex;
+  flex: 1 1 20%;
+  justify-content: center;
+  color: black;
+  width: fit-content;
+}
+
+.ingredient-entry label{
+  color: black;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 5px;
+  font-size: 20px;
+}
+
+#ingredient-list {
+  padding-top: 16px;
+}
+
+.form-control {
+  border-color: #28a745;;
+}
+
+.remove-ingredient {
+  margin-left: 7px;
+  width: 40px;
+  height: 40px;;
 }

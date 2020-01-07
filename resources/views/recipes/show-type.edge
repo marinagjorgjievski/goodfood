@@ -1,0 +1,56 @@
+@layout('layout.default')
+
+@section('content')
+
+<main>
+  <section id="section-1">
+    @each(recipe in recipes)
+    <div class="row shadow p-3 mb-5 rounded">
+      <div class="row-wrapper">
+        <div class="container-name">
+          <h1 class="name">{{recipe.name}}</h1>
+        </div>
+        <div class="container-img">
+          <img src="{{recipe.image}}">
+        </div>
+        <div class="ingredients1">
+          <h6>Ingredients :</h6>
+          <hr>
+          @if(recipe.ingredients.length)
+            <ul>
+            @each(ingredient in recipe.ingredients)
+              <li>{{ingredient.amount}} - {{ingredient.item}}</li>
+            @endeach
+            </ul>
+          @endif
+        </div>
+        <div class="accordion" id="accordion">
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#collapse-{{recipe.id}}">
+                View directions
+              </a>
+            </div>
+            <div id="collapse-{{recipe.id}}" class="collapse hide" data-parent="#accordion">
+              <div class="card-body">
+                {{recipe.directions}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cook-time">
+          <p>Cook time: {{recipe.time}}</p>
+        </div>
+        <div class="btn-align">
+          <a href="{{ route('recipes.edit', { id: recipe.id}) }}" role="button" class=" btn btn-secondary d-inline-block">Edit</a>
+          <form action="{{ route('recipes.destroy', { id: recipe.id}) }}?_method=DELETE" method="POST" class="d-inline-block">
+            {{csrfField()}}
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    @endeach
+  </section>
+</main>
+@endsection

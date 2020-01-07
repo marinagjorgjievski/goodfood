@@ -4,20 +4,18 @@
 
 <div class="content">
   <div class="btn-align">
-    <a href="{{ route('posts.create') }}" role="button" class="btn btn-secondary"><i class="fa fa-plus"></i> Add your recipe
+    <a href="{{ route('recipes.create') }}" role="button" class="btn btn-secondary"><i class="fa fa-plus"></i> Add your recipe
     </a>
   </div>
 </div>
 
 <main>
-
   <div class="btn-widgets">
     <a href="#section-1"><img src="breakfast.png" width="50px" height="50px"> Meals</a>
     <a href="#section-2"><img src="food.png" width="50px" height="50px"> Salads</a>
     <a href="#section-3"><img src="cake.png" width="50px" height="50px"> Desserts</a>
   </div>
   <hr>
-
   <section id="section-1">
     <h1>Meals</h1>
     <div class="row shadow p-3 mb-5 rounded">
@@ -143,7 +141,7 @@
     </div>
   </section>
   <div class="btn-viewmore">
-    <a href="/posts-type/meal" role="button" class="btn btn-secondary"> View more meals</a>
+    <a href="/recipes-type/meal" role="button" class="btn btn-secondary"> View more meals</a>
   </div>
 
   <section id="section-2">
@@ -286,7 +284,7 @@
     </div>
   </section>
   <div class="btn-viewmore">
-    <a href="/posts-type/salad" role="button" class="btn btn-secondary"> View more salads</a>
+    <a href="/recipes-type/salad" role="button" class="btn btn-secondary"> View more salads</a>
   </div>
 
   <section id="section-3">
@@ -427,7 +425,7 @@
     </div>
   </section>
   <div class="btn-viewmore">
-    <a href="/posts-type/dessert" role="button" class="btn btn-secondary">View more desserts</a>
+    <a href="/recipes-type/dessert" role="button" class="btn btn-secondary">View more desserts</a>
   </div>
 </main>
 
@@ -461,4 +459,5 @@
     });
   }
 </script>
+
 @endsection

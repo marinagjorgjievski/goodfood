@@ -1,4 +1,4 @@
-# Adonis fullstack application
+# Food application
 
 This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
 

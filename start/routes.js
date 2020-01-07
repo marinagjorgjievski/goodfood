@@ -18,5 +18,5 @@ const Route = use('Route')
 
 Route.get('/', 'FoodController.index')
 
-Route.resource('posts', 'FoodController')
-Route.get('/posts-type/:type', 'FoodController.showType')
+Route.resource('recipes', 'FoodController')
+Route.get('/recipes-type/:type', 'FoodController.showType')

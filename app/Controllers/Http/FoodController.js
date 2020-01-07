@@ -4,57 +4,63 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-const Post = use('App/Models/Post')
+const Recipe = use('App/Models/Recipe')
+const Ingredient = use('App/Models/Ingredient')
 const Helpers = use('Helpers')
 
 class FoodController {
 
   async index({view}) {
-
-    const posts = await Post.all();  //ke gi donese site postovi
+    const recipes = await Recipe.all();  //will bring all recipes
     return view.render('welcome', {
-      posts: posts.toJSON()
+      recipes: recipes.toJSON()
     })
   }
 
   async create({ view }) {
-    return view.render('posts.add')
+    return view.render('recipes.add')
   }
 
   async store({ request, response, session }) {
-    const post = new Post();
+    const recipe = new Recipe();
 
-    post.name = request.input('name')
-    post.time = request.input('time')
-    post.ingredients = request.input('ingredients')
-    post.directions = request.input('directions')
-    post.type = request.input('type')
+    recipe.name = request.input('name')
+    recipe.time = request.input('time')
+    recipe.directions = request.input('directions')
+    recipe.type = request.input('type')
 
-    await post.save()
+    await recipe.save()
 
-    const postPic = request.file('image', {
+    let ingredientsReqest = request.input('ingredients');
+    if (ingredientsReqest && ingredientsReqest.length) {
+      const ingredients = await recipe
+        .ingredients()
+        .createMany(ingredientsReqest)
+    }
+
+    const recipePic = request.file('image', {
       types: ['image'],
       size: '2mb'
     })
 
-    if (postPic) {
-      let imageName = 'post-pic-' + post.id + '.' + postPic.subtype;
+    if (recipePic) {
+      let imageName = 'recipe-pic-' + recipe.id + '.' + recipePic.subtype;
 
-      await postPic.move(Helpers.publicPath('uploads'), {
+      await recipePic.move(Helpers.publicPath('uploads'), {
         name: imageName,
         overwrite: true
       })
 
-      if (!postPic.moved()) {
-        console.log('jkgkh');
+      if (!recipePic.moved()) {
+
       }
 
-      post.image = '/uploads/' + imageName;
+      recipe.image = '/uploads/' + imageName;
 
-      await post.save()
+      await recipe.save()
     }
 
-    return response.redirect('/posts-type/'+request.input('type'));
+    return response.redirect('/recipes-type/'+request.input('type'));
   }
 
   async show ({ params, request, response, view }) {
@@ -64,71 +70,107 @@ class FoodController {
   async showType({view, params}) {
 
     let type = params.type;
-    const posts = await Post
+    const recipes = await Recipe
       .query()
+      .with('ingredients')
       .where('type', type)
       .fetch();
-    return view.render('posts.show-type', {
-      posts: posts.toJSON(),
+    return view.render('recipes.show-type', {
+      recipes: recipes.toJSON(),
       navType: type.toLowerCase()
     })
   }
 
   async edit ({ params, request, response, view}) {
-
-    const posts = await Post
+    const recipe = await Recipe
       .query()
+      .with('ingredients')
       .where('id', params.id)
       .firstOrFail();
-    return view.render('posts.edit', {
-      post: posts.toJSON()
+    return view.render('recipes.edit', {
+      recipe: recipe.toJSON()
     })
   }
 
   async update ({ params, request, response, session, view}) {
 
-    const post = await Post
+    const recipe = await Recipe
       .query()
+      .with('ingredients')
       .where('id', params.id)
       .firstOrFail();
+    const ingredientsOld = recipe.getRelated('ingredients');
 
-    post.name = request.input('name')
-    post.time = request.input('time')
-    post.ingredients = request.input('ingredients')
-    post.directions = request.input('directions')
-    post.type = request.input('type')
+    recipe.name = request.input('name')
+    recipe.time = request.input('time')
+    recipe.directions = request.input('directions')
+    recipe.type = request.input('type')
 
-    await post.save()
+    let ingredientsReqest = request.input('ingredients');
+    if (ingredientsReqest && ingredientsReqest.length) {
+      let ingredientsCreate = [];
+      ingredientsReqest.forEach(function(ingredient) {
+        if (ingredient) {
+          if (!ingredient.hasOwnProperty('id')) {
+            ingredientsCreate.push(ingredient);
+          }
+        }
+      });
+      if (ingredientsCreate.length) {
+        const ingredients = await recipe
+          .ingredients()
+          .createMany(ingredientsCreate)
+      }
+    }
 
-    const postPic = request.file('image', {
+    ingredientsOld.rows.forEach(function(ingredientOld) {
+      let found = false;
+      ingredientsReqest.forEach(function(ingredientRequest) {
+        if (ingredientRequest) {
+          if (ingredientRequest.hasOwnProperty('id')) {
+            if (ingredientRequest.id == ingredientOld.id) {
+              found = true;
+            }
+          }
+        }
+      });
+
+      if (!found) {
+        ingredientOld.delete();
+      }
+    })
+
+    await recipe.save()
+
+    const recipePic = request.file('image', {
       types: ['image'],
       size: '2mb'
     })
 
-    if (postPic) {
+    if (recipePic) {
 
-      let imageName = 'post-pic-' + post.id + '.' + postPic.subtype;
+      let imageName = 'recipe-pic-' + recipe.id + '.' + recipePic.subtype;
 
-      await postPic.move(Helpers.publicPath('uploads'), {
+      await recipePic.move(Helpers.publicPath('uploads'), {
         name: imageName,
         overwrite: true
       })
 
-      if (!postPic.moved()) {
+      if (!recipePic.moved()) {
       }
 
-      post.image = '/uploads/' + imageName;
+      recipe.image = '/uploads/' + imageName;
 
-      await post.save()
+      await recipe.save()
     }
 
-    return response.redirect('/posts-type/'+request.input('type'));
+    return response.redirect('/recipes-type/'+request.input('type'));
 
   }
 
   async destroy({params, session, response}) {
-    const post = await Post.find(params.id)
-    await post.delete()
+    const recipe = await Recipe.find(params.id)
+    await recipe.delete()
     return response.redirect('back')
   }
 }
