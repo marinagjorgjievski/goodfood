@@ -20,3 +20,11 @@ Route.get('/', 'FoodController.index')
 
 Route.resource('recipes', 'FoodController')
 Route.get('/recipes-type/:type', 'FoodController.showType')
+Route.get('/my-recipes', 'FoodController.myRecipes').as('myRecipes')
+
+
+Route.get('/sign-in', 'AuthController.signIn').as('auth.sign-in');
+Route.post('/login', 'AuthController.login').as('auth.login');
+Route.get('/register', 'AuthController.showRegister').as('auth.showRegister');
+Route.post('/register', 'AuthController.register').as('auth.register');
+Route.post('/logout', 'AuthController.logout').as('auth.logout');

@@ -5,6 +5,9 @@
 @set('mealActiveClass', '')
 @set('saladActiveClass', '')
 @set('dessertActiveClass', '')
+@set('myRecipesActiveClass', '')
+@set('logoutActiveClass', '')
+@set('signInActiveClass', '')
 @set('homeActiveClass', '')
 @if(navType=='meal')
   @set('mealActiveClass', 'active')
@@ -12,13 +15,42 @@
   @set('saladActiveClass', 'active')
 @elseif(navType=='dessert')
   @set('dessertActiveClass', 'active')
+@elseif(navType=='my-recipes')
+  @set('myRecipesActiveClass', 'active')
+@elseif(navType=='logout')
+  @set('logoutActiveClass', 'active')
+@elseif(navType=='sign-in')
+  @set('signInActiveClass', 'active')
 @else
   @set('homeActiveClass', 'active')
 @endif
 
-<div id="navbar">
-  <a class="nav-link {{homeActiveClass}}" href="/">Home</a>
-  <a class="nav-link {{mealActiveClass}}" href="/recipes-type/meal">Meals</a>
-  <a class="nav-link {{saladActiveClass}}" href="/recipes-type/salad">Salads</a>
-  <a class="nav-link {{dessertActiveClass}}" href="/recipes-type/dessert">Desserts</a>
+<div class="navbar-space-between" id="navbar">
+  <div>
+    <a class="nav-link {{homeActiveClass}}" href="/">Home</a>
+    <a class="nav-link {{mealActiveClass}}" href="/recipes-type/meal">Meals</a>
+    <a class="nav-link {{saladActiveClass}}" href="/recipes-type/salad">Salads</a>
+    <a class="nav-link {{dessertActiveClass}}" href="/recipes-type/dessert">Desserts</a>
+  </div>
+  <div>
+    @if(auth.user)
+      <a class="nav-link {{myRecipesActiveClass}}" href="{{ route('myRecipes') }}">My Recipes</a>
+    @endif
+
+    @if(auth.user)
+      <a class="btn-sign-in nav-link {{logoutActiveClass}}">
+        <form action="{{ route('auth.logout') }}" method="POST">
+          {{ csrfField() }}
+          <input
+            class="btn-sign-in"
+            type="submit"
+            value="Logout"/>
+        </form>
+      </a>
+    @else
+    <div class="btn-sign-in">
+      <a class="nav-link {{signInActiveClass}}" href="{{ route('auth.sign-in') }}">SignIn</a>
+    </div>
+    @endif
+  </div>
 </div>

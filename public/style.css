@@ -23,6 +23,7 @@ body {
   overflow: hidden;
   background-color: #74d862d9;
   font-family: 'Courgette', cursive;
+  display: flex;
 }
 
 #navbar a {
@@ -33,6 +34,7 @@ body {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 20px;
+  flex-wrap: wrap;
 }
 
 #navbar a:hover {
@@ -58,6 +60,20 @@ body {
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
 .sticky + .content {
   padding-top: 60px;
+}
+
+.btn-sign-in {
+  background: transparent;
+  border-color: transparent;
+}
+
+.navbar-space-between {
+  justify-content: space-between;
+}
+
+.error-messages {
+  color: red;
+  font-size: 20px;
 }
 
 .btn-align {
@@ -96,12 +112,8 @@ e, .show>.btn-outline-secondary.dropdown-toggle {
 
 main {
   padding-bottom: 40rem;
-  margin-left: 70px;
-  margin-right: 70px;
-}
-
-section {
-  padding-top: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 * {
@@ -168,6 +180,12 @@ h2 {
   padding-bottom: 20px;
 }
 
+@media only screen and (min-width: 992px) {
+  .image {
+    max-width: 962px;
+  }
+}
+
 .time {
   text-align: right;
   font-family: 'Courgette', cursive;
@@ -199,6 +217,7 @@ h2 {
   width: 100%;
   display: -webkit-box;
   display: flex;
+  flex-wrap: wrap;
   -webkit-box-pack: center;
   justify-content: center;
   text-decoration: none;

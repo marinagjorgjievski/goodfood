@@ -60,11 +60,11 @@
                 <label class="custom-control-label" for="customControlValidation2">Meal</label>
               </div>
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="customControlValidation3" name="type" value="Salad" {{ (old("type", recipe.type)=="Salad" ? "checked" : "") }}" required>
+                <input type="radio" class="custom-control-input" id="customControlValidation3" name="type" value="Salad" {{ (old("type", recipe.type)=="Salad" ? "checked" : "") }} required>
                 <label class="custom-control-label" for="customControlValidation3">Salad</label>
               </div>
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="customControlValidation4" name="type" value="Dessert" {{ (old("type", recipe.type)=="Dessert" ? "checked" : "") }}" required>
+                <input type="radio" class="custom-control-input" id="customControlValidation4" name="type" value="Dessert" {{ (old("type", recipe.type)=="Dessert" ? "checked" : "") }} required>
                 <label class="custom-control-label" for="customControlValidation4">Dessert</label>
               </div>
             </div>
@@ -113,17 +113,38 @@
 
   function addIngredient(e) {
     e.preventDefault();
-    var element = '' +
-      '        <div class="ingredient-entry" data-id="' + ingredientCount + '">' +
-      '          <label>Amount</label>' +
-      '          <input type="text" class="form-control" name="ingredients['+ingredientCount+'][amount]" required>' +
-      '          <label>Item</label>' +
-      '          <input type="text" class="form-control" name="ingredients['+ingredientCount+'][item]" required>' +
-      '          <button class="ingredient-entry-btn remove-ingredient btn btn-secondary" data-id="' + ingredientCount + '"><i class="fa fa-minus"></i></button>' +
-      '        </div>';
+    var elementDiv = document.createElement('div');
+    elementDiv.className = 'ingredient-entry';
+    elementDiv.setAttribute('data-id', ingredientCount);
+    var amountLabel = document.createElement('label');
+    amountLabel.innerHTML = "Amount";
+    var amountInput = document.createElement('input');
+    amountInput.className = 'form-control';
+    amountInput.setAttribute('type', 'text');
+    amountInput.setAttribute('name', 'ingredients['+ingredientCount+'][amount]');
+    amountInput.setAttribute('required', 'true');
+    var itemLabel = document.createElement('label');
+    itemLabel.innerHTML = "Item";
+    var itemInput = document.createElement('input');
+    itemInput.className = 'form-control';
+    itemInput.setAttribute('type', 'text');
+    itemInput.setAttribute('name', 'ingredients['+ingredientCount+'][item]');
+    itemInput.setAttribute('required', 'true');
+    var removeBtn = document.createElement('button');
+    removeBtn.className = 'ingredient-entry-btn remove-ingredient btn btn-secondary';
+    removeBtn.setAttribute('data-id', ingredientCount);
+    removeBtn.innerHTML = '<i class="fa fa-minus"></i>';
+    removeBtn.addEventListener("click", removeElement);
+
+    elementDiv.appendChild(amountLabel);
+    elementDiv.appendChild(amountInput);
+    elementDiv.appendChild(itemLabel);
+    elementDiv.appendChild(itemInput);
+    elementDiv.appendChild(removeBtn);
+
     var ingredientList = document.querySelector('#ingredient-list');
-    ingredientList.innerHTML = ingredientList.innerHTML + element;
-    addRemoveBtnListeners();
+    ingredientList.appendChild(elementDiv);
+
     ingredientCount++;
     ingredientTotal++;
     checkMinIngredients();
