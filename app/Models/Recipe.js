@@ -8,6 +8,10 @@ class Recipe extends Model {
   ingredients () {
     return this.hasMany('App/Models/Ingredient')
   }
+
+  user() {
+    return this.belongsTo('App/Models/User')
+  }
 }
 
 module.exports = Recipe

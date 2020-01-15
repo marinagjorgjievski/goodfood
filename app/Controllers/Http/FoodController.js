@@ -27,7 +27,6 @@ class FoodController {
     } catch (error) {
       return response.route('auth.sign-in')
     }
-
     return view.render('recipes.add')
   }
 
@@ -69,7 +68,6 @@ class FoodController {
           ingredientsCreate.push(ingredient);
         }
       });
-
       const ingredients = await recipe
         .ingredients()
         .createMany(ingredientsCreate)
@@ -89,7 +87,6 @@ class FoodController {
       })
 
       if (!recipePic.moved()) {
-
       }
 
       recipe.image = '/uploads/' + imageName;
@@ -112,6 +109,7 @@ class FoodController {
     const recipes = await Recipe
       .query()
       .with('ingredients')
+      .with('user')
       .where('type', type)
       .fetch();
     return view.render('recipes.show-type', {
@@ -134,6 +132,7 @@ class FoodController {
       .with('ingredients')
       .where('user_id', userId)
       .fetch();
+
     return view.render('recipes.my-recipes', {
       recipes: recipes.toJSON(),
       navType: 'my-recipes'
@@ -258,7 +257,6 @@ class FoodController {
     }
 
     return response.redirect('/recipes-type/'+request.input('type'));
-
   }
 
   async destroy({params, session, response, request, auth}) {

@@ -14,9 +14,16 @@ body {
 
 .header {
   background-image: url("pic4.jpg");
-  padding: 150px;
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
+  height: 150px;
+}
+
+@media screen and (min-width: 992px) {
+  .header {
+    height: 300px;
+  }
 }
 
 #navbar {
@@ -48,6 +55,14 @@ body {
 
 .content {
   padding: 16px;
+}
+
+section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
@@ -111,9 +126,7 @@ e, .show>.btn-outline-secondary.dropdown-toggle {
 }
 
 main {
-  padding-bottom: 40rem;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin: 40px;
 }
 
 * {
@@ -121,13 +134,21 @@ main {
 }
 
 /* Create three equal columns that floats next to each other */
-.column {
+.column{
   float: left;
   width: 33.33%;
   padding: 10px;
   font-size: medium;
   font-family: "Lucida Console";
+  text-align: center;
 }
+
+@media screen and (max-width: 992px) {
+  .column {
+    width: 100%;
+  }
+}
+
 
 /* Clear floats after the columns */
 .row:after {
@@ -150,7 +171,10 @@ main {
   display: flex;
   justify-content: center;
   margin: auto;
+  flex-wrap: wrap;
   background-color: #a6f2a6;
+  width: 100%;
+  height: auto;
 }
 
 .card {
@@ -177,7 +201,9 @@ h2 {
 }
 
 .image {
-  padding-bottom: 20px;
+  padding: 20px;
+  max-width: 100%;
+  height: auto;
 }
 
 @media only screen and (min-width: 992px) {
@@ -202,6 +228,14 @@ h2 {
   display: inline-block;
   width: 84%;
   text-align: center;
+}
+
+.recipe-username {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+  color: #325a24;
 }
 
 .recipe-btn-wrapper {
@@ -231,7 +265,7 @@ h2 {
   color: #010101;
   font-size: 36px;
   margin: 0;
-  padding: 40px;
+  padding: 20px;
 }
 
 .btn-widgets a:hover {
@@ -254,19 +288,30 @@ h3 {
 }
 
 .container-img {
-  flex: 1 1 50%;
+  flex: 1 1 100%;
   display: flex;
   padding: 30px;
+  justify-content: center;
 }
 
 .container-img img {
   width: 500px;
 }
 
-.ingredients1 {
-  flex: 1 1 50%;
+.ingredients {
   padding: 30px;
   font-size: 20px;
+  flex: 1 1 100%;
+}
+
+.ingredients-welcome {
+  text-align: left;
+}
+
+@media only screen and (min-width: 992px) {
+  .container-img, .ingredients{
+    flex: 1 1 50%;
+  }
 }
 
 .accordion {

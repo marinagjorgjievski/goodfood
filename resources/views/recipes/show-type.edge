@@ -18,7 +18,7 @@
         <div class="container-img">
           <img src="{{recipe.image}}">
         </div>
-        <div class="ingredients1">
+        <div class="ingredients">
           <h6>Ingredients :</h6>
           <hr>
           @if(recipe.ingredients.length)
@@ -55,6 +55,9 @@
             @endif
           </form>
         </div>
+      </div>
+      <div class="recipe-username">
+        <p>Recipe from: {{recipe.user.username}}</p>
       </div>
     </div>
     @endeach
